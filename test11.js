@@ -2,20 +2,19 @@ const { S_IFREG } = require('constants');
 const { create } = require('domain');
 const mineflayer = require('mineflayer')
 const TeleBot = require('telebot');
-var lastid = -1001189922556; //айди чата в который отправляются логи (ставится автоматически, меняется тоже сам, можно не писать вручную, НО тогда при каждом запуске бота надо будет ввести любую команду бота 1 раз в том чате куда вести логи)
+var lastid = 0; //айди чата в который отправляются логи (ставится автоматически, меняется тоже сам, можно не писать вручную, НО тогда при каждом запуске бота надо будет ввести любую команду бота 1 раз в том чате куда вести логи)
 
-var serverip = "25.91.183.4"; //айпи сервера
+var serverip = "IP сервера"; //айпи сервера
 var serverport = 25565;
-var username = "Covid_19";
+var username = "Nickname";
 var version = "1.12.2";
 var autojoin = false;
 
 function createMineBot() {
 
 const bot = mineflayer.createBot({
-	//host: 'ArtGameNetwork.aternos.me', 
+	
 	host: serverip,
-	//port: 60767,
 	port: serverport,
 	username: username,
 	version: version          
@@ -28,7 +27,7 @@ const rq = require("prequest");
 const { TIMEOUT } = require('dns');
 const request = require('prequest')
 var childProcess = require('child_process');
-//апи курса биткоина
+//апи курса биткоина (закомментируйте если хотите фейк курс)
 setTimeout(async () => {
 	const rq = await request('https://api.cryptonator.com/api/ticker/btc-usd');
 
@@ -40,7 +39,7 @@ setTimeout(async () => {
 //конец апи курса биткоина
 
 function time() { return new Date().toTimeString().replace(/.*(\d{2}:\d{2}:\d{2}).*/, '$1');}
-	const tbot = new TeleBot({token:"1540919193:AAGM6WH_T-5OWqqCtZA8ZAmW7NDVlyOQCow",usePlugins: ['commandButton']}); //токен телеграм бота который будет отправлять сообщения из майнкрафт в телеграм и обратно
+	const tbot = new TeleBot({token:"токен телеграм бота, можно взять у BotFather",usePlugins: ['commandButton']}); //токен телеграм бота который будет отправлять сообщения из майнкрафт в телеграм и обратно
 	
 	const utils = {
 		sp: (int) => {
